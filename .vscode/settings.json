@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "prettier.jsxSingleQuote": true,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "xml": {
+      "attr_quotes": "single"
+    }
+  }
+}
