@@ -2,7 +2,6 @@
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "prettier.jsxSingleQuote": true,
   "emmet.syntaxProfiles": {
     "javascript": "jsx",
     "xml": {

@@ -55,7 +55,11 @@ export const register = ({ name, email, password }) => dispatch => {
     )
     .catch(err => {
       dispatch(
-        returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL')
+        returnErrors(
+          err.response.data,
+          err.response.status,
+          'REGISTER_FAIL'
+        )
       )
       dispatch({
         type: REGISTER_FAIL
@@ -64,7 +68,6 @@ export const register = ({ name, email, password }) => dispatch => {
 }
 
 // Login user
-// Register user
 export const login = ({ email, password }) => dispatch => {
   // Header
   const config = {
@@ -86,7 +89,11 @@ export const login = ({ email, password }) => dispatch => {
     )
     .catch(err => {
       dispatch(
-        returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL')
+        returnErrors(
+          err.response.data,
+          err.response.status,
+          'LOGIN_FAIL'
+        )
       )
       dispatch({
         type: LOGIN_FAIL
@@ -109,7 +116,7 @@ export const tokenConfig = getState => {
   // Headers
   const config = {
     headers: {
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     }
   }
 
