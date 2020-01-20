@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import {
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Button
+} from 'reactstrap'
+import {
+  CSSTransition,
+  TransitionGroup
+} from 'react-transition-group'
 import { connect } from 'react-redux'
 import { getItems, deleteItem } from '../actions/itemActions'
 import PropTypes from 'prop-types'
@@ -22,30 +30,34 @@ class ShoppingList extends Component {
 
   render() {
     const { items } = this.props.item
+    const { isAuthenticated } = this.props.auth
     return (
       <Container>
-        <ListGroup>
-          <TransitionGroup className='shopping-list'>
-            {items.map(({ _id, name }) => (
-              <CSSTransition key={_id} timeout={500} classNames='fade'>
-                <ListGroupItem>
-                  {this.props.isAuthenticated ? (
+        {isAuthenticated && (
+          <ListGroup>
+            <TransitionGroup className="shopping-list">
+              {items.map(({ _id, name }) => (
+                <CSSTransition
+                  key={_id}
+                  timeout={500}
+                  classNames="fade"
+                >
+                  <ListGroupItem>
                     <Button
-                      className='remove-btn'
-                      color='danger'
-                      size='sm'
+                      className="remove-btn"
+                      color="danger"
+                      size="sm"
                       onClick={this.onDeleteClick.bind(this, _id)}
                     >
                       &times;
                     </Button>
-                  ) : null}
-
-                  {name}
-                </ListGroupItem>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </ListGroup>
+                    {name}
+                  </ListGroupItem>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          </ListGroup>
+        )}
       </Container>
     )
   }
@@ -53,10 +65,9 @@ class ShoppingList extends Component {
 
 const mapStateToProps = state => ({
   item: state.item,
-  isAuthenticated: state.auth.isAuthenticated
+  auth: state.auth
 })
 
-export default connect(
-  mapStateToProps,
-  { getItems, deleteItem }
-)(ShoppingList)
+export default connect(mapStateToProps, { getItems, deleteItem })(
+  ShoppingList
+)
