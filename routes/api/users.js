@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 
-// Item Model
+// User Model
 const User = require('../../models/User')
 
 // @route  POST api/users
@@ -20,7 +20,8 @@ router.post('/', (req, res) => {
 
   // Check for existing user
   User.findOne({ email }).then(user => {
-    if (user) return res.status(400).json({ msg: 'User already exists' })
+    if (user)
+      return res.status(400).json({ msg: 'User already exists' })
 
     const newUser = new User({
       name,
